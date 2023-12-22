@@ -26,6 +26,7 @@ function Login() {
   });
   //on submit
   const onSubmit = (data) => {
+    console.log(data);
     dispatch(loginAction(data));
   };
   //useEffect

@@ -18,6 +18,9 @@ import DashBoard from "./Screens/Dardboard/Admin/DashBoard";
 import Categories from "./Screens/Dardboard/Admin/Catogeries";
 import Users from "./Screens/Dardboard/Admin/User";
 import AddMovie from "./Screens/Dardboard/Admin/AddMovie";
+import Discover from "./Screens/Discover";
+import Products from "./Screens/Products";
+import Premium from "./Screens/Premium";
 import ScrollOnTop from "./ScrollOnTop";
 import ToastContainer from "./Components/Notifications/ToastContainer";
 import { AdminProtectedRouter, ProtectedRouter } from "./ProtectedRouter";
@@ -61,6 +64,9 @@ function App() {
           <Route path="/movie/:id" element={<SingleMovie />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/premium" element={<Premium />} />
+          <Route path="/discover" element={<Discover />} />
           <Route path="*" element={<NotFound />} />
           {/***PRIVATE PUBLIC ROUTERS ****/}
           <Route element={<ProtectedRouter />}>

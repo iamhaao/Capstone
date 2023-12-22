@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { FaSearch, FaUser } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
+import { HiOutlineFilm } from "react-icons/hi2";
+import { TbCrown } from "react-icons/tb";
+import { HiLogin } from "react-icons/hi";
 import { FiHeart } from "react-icons/fi";
+import { MdAirplaneTicket } from "react-icons/md";
+import { PiShootingStarThin } from "react-icons/pi";
 import { useSelector } from "react-redux";
 function Navbar() {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const { userInfo } = useSelector((state) => state.userLogin);
   const { likedMovies } = useSelector((state) => state.userGetFavoriteMovies);
-  const hover = "hover:text-subMain transitions text-white";
-  const Hover = ({ isActive }) => (isActive ? "text-subMain" : hover);
+  const hover =
+    "hover:text-subMain transitions flex gap-2 justify-end items-center";
+  const Hover = ({ isActive }) =>
+    isActive ? hover + "text-subMain" : hover + "text-white";
   const handleSearch = (e) => {
     e.preventDefault();
     if (search.trim()) {
@@ -32,7 +39,7 @@ function Navbar() {
               />
             </Link>
           </div>
-          <div className="col-span-3">
+          <div className="col-span-2">
             <form
               onSubmit={handleSearch}
               className="w-full text-sm bg-dryGray rounded flex-btn gap-4"
@@ -52,15 +59,34 @@ function Navbar() {
               ></input>
             </form>
           </div>
-          <div className="col-span-3 font-medium text-sm hidden xl:gap-14 2xl:gap-20 justify-between lg:flex xl:justify-end items-center">
-            <NavLink to="/movies" className={Hover}>
+          <div className="col-span-4 font-medium text-sm hidden xl:gap-8 2xl:gap-8 justify-between lg:flex xl:justify-center items-center">
+            <NavLink
+              to="/movies"
+              className="hover:text-subMain transitions text-white flex gap-2 justify-end items-center"
+            >
+              <HiOutlineFilm className="w-6 h-6" />
               Movies
             </NavLink>
-            <NavLink to="/about-us" className={Hover}>
-              About Us
+            <NavLink
+              to="/premium"
+              className="hover:text-subMain transitions text-white flex gap-2 justify-end items-center"
+            >
+              <TbCrown className="w-6 h-6 text-yellow-400" />
+              Premium Account
             </NavLink>
-            <NavLink to="/contact-us" className={Hover}>
-              Contact US
+            <NavLink
+              to="/discover"
+              className="hover:text-subMain transitions text-white flex gap-2 justify-end items-center"
+            >
+              <PiShootingStarThin className="w-6 h-6" />
+              Discover
+            </NavLink>
+            <NavLink
+              to="/products"
+              className="hover:text-subMain transitions text-white flex gap-2 justify-end items-center"
+            >
+              <MdAirplaneTicket className="w-6 h-6" />
+              Products
             </NavLink>
             <NavLink
               to={
@@ -79,14 +105,17 @@ function Navbar() {
                   className="w-8 h-8 rounded-full border object-cover border-subMain"
                 />
               ) : (
-                <FaUser className="w-6 h-6" />
+                <>
+                  <HiLogin className="w-6 h-6" />
+                  <p>Login</p>
+                </>
               )}
             </NavLink>
             <NavLink to="/favorite" className={`${hover} relative`}>
               <div className="w-5 h-5 flex-colo rounded-full text-xs bg-subMain text-white absolute -top-5 -right-1 ">
                 {likedMovies?.length}
               </div>
-              <FiHeart />
+              <FiHeart className="w-6 h-6" />
             </NavLink>
           </div>
         </div>
