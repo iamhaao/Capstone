@@ -96,7 +96,7 @@ function Footer() {
           <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span 3">
             <Link to="/">
               <img
-                src="/images/logo.png"
+                src="/images/logo1.png"
                 alt="MonterHub."
                 className="w-2/4 object-contain h-12"
               />

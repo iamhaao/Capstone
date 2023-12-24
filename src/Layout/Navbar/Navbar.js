@@ -33,9 +33,9 @@ function Navbar() {
           <div className="col-span 1 lg:block hidden">
             <Link to="/">
               <img
-                src="/images/logo.png"
+                src="/images/logo1.png"
                 alt="Monterhub."
-                className="w-full h-12 object-contain "
+                className="w-full h-12   object-contain "
               />
             </Link>
           </div>
