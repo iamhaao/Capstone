@@ -10,6 +10,9 @@ function Premium() {
   const onNext = () => {
     setSelectedStage(selectedStage + 1);
   };
+  const onBack = () => {
+    setSelectedStage(selectedStage - 1);
+  };
   const Stages = [
     {
       index: 0,
@@ -34,7 +37,7 @@ function Premium() {
   ];
   const progessPremiumaccount = useCallback(() => {
     return (
-      <div className="flex py-4 px-40">
+      <div className="flex py-4 px-40 mx-auto">
         {Stages.map((stage, index) => (
           <div key={index} className="w-1/4">
             <div className="flex items-center ml-1">
@@ -43,28 +46,28 @@ function Premium() {
                   selectedStage > stage.index
                     ? "bg-gray-500"
                     : selectedStage === stage.index
-                    ? "bg-yellow-500"
+                    ? "bg-gold"
                     : "bg-white"
-                } rounded-3xl text-black border-gray-600 w-7 h-7 border-4 flex justify-center items-center`}
+                } rounded-3xl text-blac w-7 h-7  flex justify-center items-center`}
               >
                 <p
                   className={`${
                     selectedStage > stage.index
-                      ? "text-gray-700"
+                      ? "text-gray-800  "
                       : selectedStage === stage.index
-                      ? "text-white"
-                      : "text-gray-700"
-                  } text-sm font-semibold`}
+                      ? "text-blue"
+                      : "text-gray-600"
+                  } text-base font-bold font-sans`}
                 >
                   {index + 1}
                 </p>
               </div>
               {index !== Stages.length - 1 && (
-                <div className="ml-1 border-gray-500 w-full border-b border-2 justify-center items-center"></div>
+                <div className="border-gray-500 w-full border-b border-2 justify-center items-center"></div>
               )}
             </div>
             <div className="">
-              <h2 className="text-gray-500">{stage.title}</h2>
+              <h2 className="text-white">{stage.title}</h2>
             </div>
           </div>
         ))}
@@ -78,8 +81,6 @@ function Premium() {
     if (foundStage) {
       return foundStage.component;
     }
-
-    // Return a default component or handle the case when no match is found
     return null;
   }, [selectedStage]);
   return (
@@ -87,17 +88,37 @@ function Premium() {
       <div className="">
         {progessPremiumaccount()}
         <div className="flex-colo border-b border-yellow-400 py-5">
-          <h1 className="text-subMain text-3xl font-bold">
+          <h1 className="text-white text-3xl font-bold">
             SIGN UP FOR PREMIUM ACCOUNT
           </h1>
         </div>
         {renderStage()}
-        <button
-          onClick={onNext}
-          className="bg-yellow-500 py-3 px-6 rounded-md font-bold text-ml my-4"
-        >
-          {selectedStage !== Stages.length - 1 ? "Next Page" : "Register"}
-        </button>
+        <div className="flex justify-between mx-20">
+          <button
+            onClick={onBack}
+            className={`${
+              selectedStage === 0 || selectedStage === Stages.length - 1
+                ? "bg-gray-400"
+                : " bg-subMain"
+            } ${
+              selectedStage === 0 || selectedStage === Stages.length - 1
+                ? "bg-gray-600"
+                : " text-white"
+            }
+           py-2 px-6 rounded-md border-border border-2 font-bold text-ml my-4`}
+            disabled={
+              selectedStage === 0 || selectedStage === Stages.length - 1
+            }
+          >
+            Back
+          </button>
+          <button
+            onClick={onNext}
+            className="bg-subMain py-2 px-6 rounded-md font-bold text-ml my-4"
+          >
+            {selectedStage !== Stages.length - 1 ? "Next Page" : "Sign Up"}
+          </button>
+        </div>
       </div>
     </Layout>
   );
