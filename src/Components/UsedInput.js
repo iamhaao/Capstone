@@ -39,23 +39,35 @@ export const Input = ({
   name,
   value,
   onChange,
+  suffix,
 }) => {
   return (
     <>
-      <div className="text-sm w-full">
-        <label className="text-border font-semibold">{label}</label>
-        <input
-          required
-          name={name}
-          value={value}
-          onChange={onChange}
-          {...register}
-          type={type}
-          placeholder={placeholder}
-          className={`w-full text-sm mt-2 p-4 text-white border border-border rounded ${
-            bg ? "bg-main" : "bg-dry"
-          }`}
-        />
+      <div className="text-[13px] w-full">
+        <label className="text-white font-semibold font-euclid mb-2">
+          {label}
+        </label>
+        <div className="flex flex-col">
+          <div className="relative">
+            <input
+              required
+              name={name}
+              value={value}
+              onChange={onChange}
+              {...register}
+              type={type}
+              placeholder={placeholder}
+              className={`w-full text-sm font-euclid font-normal p-2 text-black border border-border rounded-md ${
+                bg ? "bg-main" : "bg-white"
+              }`}
+            />
+            {suffix && (
+              <div className="absolute text-black inset-y-0 right-0 flex items-center pr-3">
+                {suffix}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </>
   );

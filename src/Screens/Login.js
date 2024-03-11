@@ -59,30 +59,34 @@ function Login() {
           <div className="w-full">
             <Input
               label="Email"
-              placeholder="Monterhub@gmail.com"
               type="email"
               name="email"
               register={register("email")}
-              bg={true}
             />
             {errors.email && <InlineError text={errors.email.message} />}
           </div>
 
           <div className="w-full">
             <Input
-              label="password"
-              placeholder="*******"
+              label="Password"
               type="password"
               name="password"
               register={register("password")}
-              bg={true}
             />
             {errors.password && <InlineError text={errors.password.message} />}
+          </div>
+          <div className="w-full flex justify-end my-[-12px]">
+            <Link
+              to={"/forgotPass"}
+              className="justify-end mr-2 text-subMain text-sm hover:underline hover:text-gold"
+            >
+              Forgot password?
+            </Link>
           </div>
           <button
             type="submit"
             disabled={isLoading}
-            className="bg-subMain transitions hover:bg-main flex-rows gap-4 text-white p-4 rounded-lg w-full"
+            className="bg-subMain transitions hover:bg-main flex-rows gap-4 text-white p-2 rounded-lg w-full"
           >
             {
               //if loading show loading
@@ -96,6 +100,10 @@ function Login() {
               )
             }
           </button>
+          <div className="flex gap-3 w-full py-2 border-gray-600 border-2 rounded-lg justify-center items-center bg-white text-gray-400 hover:bg-dry ">
+            <img className="h-5 w-5 object-cover" src="/images/google.png" />
+            Sign In with Google
+          </div>
           <p className="text-center text-border">
             Don't have an account?
             <Link to="/register" className="text-dryGray font-semibold ml-2">

@@ -25,6 +25,9 @@ module.exports = {
         blue: "#123577",
         violet: "#8B008B	",
       },
+      fontFamily: {
+        euclid: ["Euclid Circular A", "sans-serif"],
+      },
     },
   },
   plugins: [require("@tailwindcss/line-clamp")],

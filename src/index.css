@@ -15,14 +15,14 @@ input:focus,select:focus,textarea:focus {
 .linear-bg{
     background: linear-gradient(269.82deg,#07092C00 0.17%,#080a1ad6 99%);
 }
+.flex-colo{
+    @apply flex flex-col justify-center items-center
+}
 .hoveres{
     @apply hidden
 }
 .hovered:hover .hoveres{
    @apply flex-colo
-}
-.flex-colo{
-    @apply flex flex-col justify-center items-center
 }
 .flex-rows{
     @apply flex flex-row justify-center items-center

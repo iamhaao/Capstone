@@ -14,6 +14,7 @@ const Swipper = ({ prevEl, nextEl, movies }) => {
   const { isLoading } = useSelector((state) => state.userLikeMovie);
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.userLogin);
+  const [isHovered, setIsHovered] = useState(false);
 
   //if liked function
   const isLiked = (movie) => {
@@ -51,14 +52,14 @@ const Swipper = ({ prevEl, nextEl, movies }) => {
     >
       {movies.map((movie, index) => (
         <SwiperSlide key={index}>
-          <div className="p-4 hovered h-rate border border-border bg-dry rounred-lg overflow-hidden">
+          <div className="p-4 h-rate hovered border border-border bg-dry rounded-lg overflow-hidden">
             <img
               src={movie?.titleImage ? movie?.titleImage : ""}
               alt={movie.name}
               className="w-full h-full object-cover rounded-lg"
             />
           </div>
-          <div className="px-4 flex-colo gap-6 text-center absolute bg-black bg-opacity-70 top-0 left-0 right-0 bottom-0 ">
+          <div className="w-full hoveres px-4 gap-6 text-center absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-70 ">
             <button
               onClick={() => LikeMovie(movie, dispatch, userInfo)}
               disabled={isLiked(movie) || isLoading}

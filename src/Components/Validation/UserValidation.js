@@ -23,7 +23,24 @@ const RegisterValidation = yup.object().shape({
     .string()
     .required("Full name is required")
     .max(30, "Fullname is mus be lessthan 30 characters")
-    .matches(/^[a-zA-Z]*$/, "Name must containt only letters"),
+    .matches(/^[a-zA-Z ]*$/, "Name must containt only letters"),
+  dob: yup
+    .date()
+    .nullable()
+    .required("Birthdate is required")
+    .max(new Date(), "Birthdate must be in the past"),
+  phone: yup
+    .string()
+    .required("Phone number is required")
+    .matches(/^[0-9]{10}$/, "Invalid phone number"),
+  confirmPassword: yup
+    .string()
+    .required("password required")
+    .oneOf(
+      [yup.ref("password"), null],
+      "New Password and Confirm password must match"
+    ),
+  term: yup.boolean().required("term required"),
 });
 
 const ProfileValidation = yup.object().shape({

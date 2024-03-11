@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { HiOutlineFilm } from "react-icons/hi2";
@@ -26,6 +26,7 @@ function Navbar() {
       navigate("/movies");
     }
   };
+  useEffect(() => {}, [userInfo]);
   return (
     <>
       <div className="bg-main shadow-md sticky top-0 z-20">
@@ -100,7 +101,7 @@ function Navbar() {
             >
               {userInfo ? (
                 <img
-                  src={userInfo?.image ? userInfo?.image : "/images/user.png"}
+                  src={userInfo?.avatar ? userInfo?.avatar : "/images/user.png"}
                   alt={userInfo?.name}
                   className="w-8 h-8 rounded-full border object-cover border-subMain"
                 />
